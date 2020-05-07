@@ -9,11 +9,12 @@ int main(int arg, char *args[])
     if(pipe(fd) < 0)
     {
         printf("pipe error\n");
-        exit(-1);
+        return -1;
     }
     if((pid = fork()) < 0)
     {
-
+        printf("fork error\n");
+        return -1;
     }
     else if(pid == 0)
     {
@@ -27,5 +28,5 @@ int main(int arg, char *args[])
         write(STDOUT_FILENO, line, n);
     }
     
-    exit(0);
+    return 0;
 }
